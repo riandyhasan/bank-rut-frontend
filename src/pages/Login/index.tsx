@@ -4,7 +4,7 @@ import InputPassword from "@src/components/Input/InputPassword";
 import Button from "@src/components/Button";
 import colors from "@src/utils/colors";
 
-const Register = () => {
+const Login = () => {
   return (
     <Flex w="100%">
       <Flex
@@ -61,4 +61,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
