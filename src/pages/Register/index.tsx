@@ -8,11 +8,12 @@ import { UserRegister } from '@src/types/users'
 import { register } from '@src/services/users'
 import Link from 'next/link';
 import { useState } from 'react';
-import { app, db } from '@src/utils/firebase';
+import { app } from '@src/utils/firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useRouter } from 'next/router';
 
 const Register = () => {
+  const firebaseApp = app;
   const [username, setUsername] = useState<string>('');
   const [fullname, setFullname] = useState<string>('');
   const [password, setPassword] = useState<string>('');
