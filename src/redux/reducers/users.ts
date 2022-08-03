@@ -17,7 +17,6 @@ import { UserData } from '@src/types/users';
     switch (action.type) {
       case 'SET_USER':
         return {
-          ...prevState,
           data: action.payload,
         };
       case 'USER_LOGOUT':

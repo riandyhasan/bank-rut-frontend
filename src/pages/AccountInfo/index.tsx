@@ -2,8 +2,10 @@ import { Flex, Heading, Grid, GridItem, Text } from "@chakra-ui/react";
 import InputText from "@src/components/Input/InputText";
 import Icon from "@src/components/Icon";
 import colors from "@src/utils/colors";
+import { store } from '@src/redux/store';
 
 const AccountInfo = () => {
+  const user = store.getState()?.users?.data
   return (
     <Flex w="70vw" ml='30vw' overflowX='hidden' overflowY='auto' position='relative'>
       <Flex px='2rem' flexDir="column" w="100%">
@@ -11,7 +13,7 @@ const AccountInfo = () => {
         <Grid gridTemplateColumns="repeat(2, 1fr)" gap="2rem">
           <GridItem>
             <InputText
-              value={'Rudi Tabuti'}
+              value={user?.fullname}
               setValue={() => null}
               isRequired={false}
               label="Nama Lengkap"
@@ -19,7 +21,7 @@ const AccountInfo = () => {
           </GridItem>
           <GridItem>
             <InputText
-              value={'Rudi Tabuti 12313'}
+              value={user?.username}
               setValue={() => null}
               isRequired={false}
               label="Username"
@@ -35,10 +37,10 @@ const AccountInfo = () => {
           borderRadius='17px'
           mt='3rem'
         >
-         <Heading color={colors.white}>Rudi Tabuti</Heading>
+         <Heading color={colors.white}>{user?.fullname}</Heading>
          <Flex alignItems='center' color={colors.orange} gridGap='2rem'>
             <Icon name='coin-dollar' size={60} color={colors.orange} />
-            <Heading>Rp. 5.000.000</Heading>
+            <Heading>{user?.balance}</Heading>
          </Flex>
         </Flex>
         <Flex alignItems='center' justifyContent='center' my='1.5rem' w='100%' gridGap='3rem'>
