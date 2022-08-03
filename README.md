@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# BANK-RUT FRONTEND
+Riandy Hasan - 18220058
+Bank Rut adalah sebuah Bank yang digunakan untuk bertransaksi sampai user bankrut, Bank Rut menyediakan fitur untuk melakukan request untuk penambahan atau pengurangan saldo user dan dapat melakukan transaksi satu sama lain. 
 
-## Getting Started
+## FITUR YANG BELUM TERIMPLEMENTASI
+1. Penyambungan Info Akun, Request Saldo, Transaksi dan Riwayat Transaksi dengan backend
+2. Halaman admin
+3. Pagination
+4. Currency
 
-First, run the development server:
+## DEPLOYMENT
+https://bank-rut-frontend.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## SEMUA HALAMAN
+Landing: https://bank-rut-frontend.vercel.app/
+Register: https://bank-rut-frontend.vercel.app/register
+Login: https://bank-rut-frontend.vercel.app/login
+Account Info: https://bank-rut-frontend.vercel.app/dashboard/account-info
+Balance Request: https://bank-rut-frontend.vercel.app/dashboard/balance-request
+Request History: https://bank-rut-frontend.vercel.app/dashboard/request-history
+Transaction: https://bank-rut-frontend.vercel.app/dashboard/transaction
+Transaction History: https://bank-rut-frontend.vercel.app/dashboard/transaction-history
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## STACK YANG DIGUNAKAN
+1. React
+2. Next.js
+3. Component and Styling: Chakra UI
+4. Icon: React IconMoon
+5. Cookie: React Redux
+6. Storage: Firebase
+7. Deployment: Vercel
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## CARA MENJALANKAN
+1. Pastikan telah menginstall semua module yang ada dengan mengetikkan ```npm i```
+2. Ketik di terminal ```npm run dev```
+3. Buka ```localhost:3000```
