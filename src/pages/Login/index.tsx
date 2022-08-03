@@ -58,9 +58,9 @@ const Login = () => {
         >
           <Button type="primary" text="Masuk" fs="1.1em" px="2rem"  onClick={handleLogin} />
           <Text>
-            Sudah memiliki akun?{" "}
+            Belum memiliki akun?{" "}
             <Link
-              href="/login"
+              href="/register"
               style={{
                 textDecoration: "none",
                 color: colors.primaryBlue,
