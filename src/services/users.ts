@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { UserLogin, UserRegister } from '@src/types/users';
+import { UserData, UserLogin, UserRegister } from '@src/types/users';
 import API from '@src/utils/api';
+import { store } from '@src/redux/store';
+import { setUser } from '@src/redux/action/users';
 
 export const register = async (payload: UserRegister) => {
     const response = (await axios(
@@ -10,6 +12,9 @@ export const register = async (payload: UserRegister) => {
         data: payload,
       },
     ))
+    const userData = response.data.data as UserData;
+    const authToken = response.data.token;
+    await store.dispatch(setUser(userData, authToken));
     return response.data;
 };
 
@@ -21,6 +26,9 @@ export const login = async (payload: UserLogin) => {
       data: payload,
     },
   ))
+  const userData = response.data.data as UserData;
+  const authToken = response.data.token;
+  await store.dispatch(setUser(userData, authToken));
   return response.data;
 };
 

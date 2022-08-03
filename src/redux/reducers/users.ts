@@ -6,6 +6,7 @@ import { UserData } from '@src/types/users';
   
   export type UserReducerActions =
     | { type: 'SET_USER'; payload: UserData }
+    | { type: 'USER_LOGOUT' }
     | { type: 'USER_INIT' };
   
   const defaultState = {
@@ -18,6 +19,10 @@ import { UserData } from '@src/types/users';
         return {
           ...prevState,
           data: action.payload,
+        };
+      case 'USER_LOGOUT':
+        return {
+
         };
       case 'USER_INIT':
         return defaultState;

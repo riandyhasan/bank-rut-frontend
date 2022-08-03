@@ -1,7 +1,10 @@
-export const usersActionTypes = {
-    ADD_USER: "ADD_USER",
-  };
-  
-  export const addUser = (newUser) => {
-    return { type: usersActionTypes.ADD_USER, user: newUser };
-  };
+import { UserData } from '@src/types/users'
+export const setUser = (payload: UserData, token: string) => ({
+    type: 'SET_USER', 
+    data: payload,
+    token: token,
+  });
+
+  export const userLogout = () => ({
+    type: 'USER_LOGOUT',
+  });
