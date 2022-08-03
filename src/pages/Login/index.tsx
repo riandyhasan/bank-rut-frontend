@@ -3,8 +3,23 @@ import InputText from "@src/components/Input/InputText";
 import InputPassword from "@src/components/Input/InputPassword";
 import Button from "@src/components/Button";
 import colors from "@src/utils/colors";
+import { useState } from 'react';
+import { UserLogin } from '@src/types/users'
+import { login } from '@src/services/users'
 
 const Login = () => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const handleLogin = async () => {
+    const payload = {
+      username: username,
+      password: password,
+    } as UserLogin;
+    const response = await login(payload);
+    console.log(response);
+  }
+
   return (
     <Flex w="100%">
       <Flex
@@ -16,8 +31,8 @@ const Login = () => {
         <Grid gridTemplateColumns="repeat(1, 1fr)" gap="2rem">
           <GridItem>
             <InputText
-              value={null}
-              setValue={() => null}
+              value={username}
+              setValue={setUsername}
               isRequired={true}
               label="Username"
               placeholder="Username..."
@@ -25,8 +40,8 @@ const Login = () => {
           </GridItem>
           <GridItem>
             <InputPassword
-              value={null}
-              setValue={() => null}
+              value={password}
+              setValue={setPassword}
               isRequired={true}
               label="Password"
               placeholder="Password..."
@@ -40,7 +55,7 @@ const Login = () => {
           flexDir="column"
           mt="2rem"
         >
-          <Button type="primary" text="Masuk" fs="1.1em" px="2rem" />
+          <Button type="primary" text="Masuk" fs="1.1em" px="2rem"  onClick={handleLogin} />
           <Text>
             Sudah memiliki akun?{" "}
             <a

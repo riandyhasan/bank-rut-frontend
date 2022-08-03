@@ -6,6 +6,9 @@ import Button from "@src/components/Button";
 import Link from "next/link";
 import Icon from "@src/components/Icon";
 import { IconList } from "@src/components/Icon/type";
+// import { useSelector, useDispatch } from "react-redux";
+// import { addUser } from "@src/redux/action/users";
+// import { store } from '@src/redux/store';
 
 const ITEM = [
   {
@@ -23,6 +26,7 @@ const ITEM = [
 ];
 
 const Landing = () => {
+
   return (
     <Flex flexDir="column">
       <Flex
