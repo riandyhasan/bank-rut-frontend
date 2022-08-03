@@ -13,7 +13,7 @@ const AccountInfo = () => {
         <Grid gridTemplateColumns="repeat(2, 1fr)" gap="2rem">
           <GridItem>
             <InputText
-              value={user?.fullname}
+              value={user?.full_name}
               setValue={() => null}
               isRequired={false}
               label="Nama Lengkap"
@@ -37,7 +37,7 @@ const AccountInfo = () => {
           borderRadius='17px'
           mt='3rem'
         >
-         <Heading color={colors.white}>{user?.fullname}</Heading>
+         <Heading color={colors.white}>{user?.full_name}</Heading>
          <Flex alignItems='center' color={colors.orange} gridGap='2rem'>
             <Icon name='coin-dollar' size={60} color={colors.orange} />
             <Heading>{user?.balance}</Heading>
