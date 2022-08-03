@@ -6,6 +6,7 @@ import colors from "@src/utils/colors";
 import { useState } from 'react';
 import { UserLogin } from '@src/types/users'
 import { login } from '@src/services/users'
+import Link from 'next/link';
 
 const Login = () => {
   const [username, setUsername] = useState<string>('');
@@ -58,7 +59,7 @@ const Login = () => {
           <Button type="primary" text="Masuk" fs="1.1em" px="2rem"  onClick={handleLogin} />
           <Text>
             Sudah memiliki akun?{" "}
-            <a
+            <Link
               href="/login"
               style={{
                 textDecoration: "none",
@@ -67,8 +68,14 @@ const Login = () => {
                 cursor: "pointer",
               }}
             >
-              Daftar
-            </a>
+              <span               
+              style={{
+                textDecoration: "none",
+                color: colors.primaryBlue,
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}>Daftar</span>
+            </Link>
           </Text>
         </Flex>
       </Flex>

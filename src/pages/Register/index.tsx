@@ -4,6 +4,7 @@ import InputPassword from "@src/components/Input/InputPassword";
 import InputFile from "@src/components/Input/InputFile";
 import Button from "@src/components/Button";
 import colors from "@src/utils/colors";
+import Link from 'next/link';
 
 const Register = () => {
   return (
@@ -70,7 +71,7 @@ const Register = () => {
           <Button type="primary" text="Daftar" fs="1.1em" px="2rem" />
           <Text>
             Sudah memiliki akun?{" "}
-            <a
+            <Link
               href="/login"
               style={{
                 textDecoration: "none",
@@ -79,8 +80,14 @@ const Register = () => {
                 cursor: "pointer",
               }}
             >
-              Masuk
-            </a>
+              <span               
+              style={{
+                textDecoration: "none",
+                color: colors.primaryBlue,
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}>Daftar</span>
+            </Link>
           </Text>
         </Flex>
       </Flex>
