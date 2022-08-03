@@ -7,8 +7,10 @@ import { useState } from 'react';
 import { UserLogin } from '@src/types/users'
 import { login } from '@src/services/users'
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Login = () => {
+  const router = useRouter();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -17,8 +19,13 @@ const Login = () => {
       username: username,
       password: password,
     } as UserLogin;
-    const response = await login(payload);
-    console.log(response);
+    try{
+      const response = await login(payload);
+      alert(response.message);
+      router.push('/dashboard/account-info');
+    }catch(e){
+      alert(e.message);
+    }
   }
 
   return (

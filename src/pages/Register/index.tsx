@@ -4,9 +4,44 @@ import InputPassword from "@src/components/Input/InputPassword";
 import InputFile from "@src/components/Input/InputFile";
 import Button from "@src/components/Button";
 import colors from "@src/utils/colors";
+import { UserRegister } from '@src/types/users'
+import { register } from '@src/services/users'
 import Link from 'next/link';
+import { useState } from 'react';
+import { app, db } from '@src/utils/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useRouter } from 'next/router';
 
 const Register = () => {
+  const [username, setUsername] = useState<string>('');
+  const [fullname, setFullname] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [retypePassword, setRetypePassword] = useState<string>('');
+  const [file, setFile] = useState<File>(null);
+  const router = useRouter();
+
+  const handleRegister = async () => {
+    const storage = getStorage();
+    const storageRef = ref(storage, `ktp/${file.name}`);
+    uploadBytes(storageRef, file).then((snapshot) => {
+      getDownloadURL(ref(storage, `ktp/${file.name}`)).then(async function (url){
+        const payload = {
+          full_name: fullname,
+          username: username,
+          password: password,
+          ktp: url
+        } as UserRegister
+        try{
+          const response = await register(payload);
+          alert(response.message);
+          router.push('/dashboard/account-info');
+        }catch(e){
+          alert(e.message);
+        }
+      })
+    })
+  }
+
   return (
     <Flex w="100%">
       <Flex
@@ -18,8 +53,8 @@ const Register = () => {
         <Grid gridTemplateColumns="repeat(2, 1fr)" gap="2rem">
           <GridItem>
             <InputText
-              value={null}
-              setValue={() => null}
+              value={fullname}
+              setValue={setFullname}
               isRequired={true}
               label="Nama Lengkap"
               placeholder="Name lengkap..."
@@ -27,8 +62,8 @@ const Register = () => {
           </GridItem>
           <GridItem>
             <InputText
-              value={null}
-              setValue={() => null}
+              value={username}
+              setValue={setUsername}
               isRequired={true}
               label="Username"
               placeholder="Username..."
@@ -36,8 +71,8 @@ const Register = () => {
           </GridItem>
           <GridItem>
             <InputPassword
-              value={null}
-              setValue={() => null}
+              value={password}
+              setValue={setPassword}
               isRequired={true}
               label="Password"
               placeholder="Password..."
@@ -45,8 +80,8 @@ const Register = () => {
           </GridItem>
           <GridItem>
             <InputPassword
-              value={null}
-              setValue={() => null}
+              value={retypePassword}
+              setValue={setRetypePassword}
               isRequired={true}
               label="Ulangi Password"
               placeholder="Ulangi password..."
@@ -54,8 +89,8 @@ const Register = () => {
           </GridItem>
           <GridItem w="50%">
             <InputFile
-              file={null}
-              setFile={() => null}
+              file={file}
+              setFile={setFile}
               isRequired={true}
               label="Foto KTP"
               type="image/*,.pdf"
@@ -68,7 +103,7 @@ const Register = () => {
           w="100%"
           flexDir="column"
         >
-          <Button type="primary" text="Daftar" fs="1.1em" px="2rem" />
+          <Button type="primary" text="Daftar" fs="1.1em" px="2rem" onClick={handleRegister} />
           <Text>
             Sudah memiliki akun?{" "}
             <Link
@@ -86,7 +121,7 @@ const Register = () => {
                 color: colors.primaryBlue,
                 fontWeight: "bold",
                 cursor: "pointer",
-              }}>Daftar</span>
+              }}>Masuk</span>
             </Link>
           </Text>
         </Flex>

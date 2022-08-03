@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { UserData, UserLogin } from '@src/types/users';
+import { UserLogin, UserRegister } from '@src/types/users';
 import API from '@src/utils/api';
 
-export const register = async (payload: UserData) => {
+export const register = async (payload: UserRegister) => {
     const response = (await axios(
       {
         method: 'POST',
@@ -10,7 +10,7 @@ export const register = async (payload: UserData) => {
         data: payload,
       },
     ))
-    return response;
+    return response.data;
 };
 
 export const login = async (payload: UserLogin) => {
@@ -21,7 +21,7 @@ export const login = async (payload: UserLogin) => {
       data: payload,
     },
   ))
-  return response;
+  return response.data;
 };
 
 export const getAllUsers = async (authToken: string) => {

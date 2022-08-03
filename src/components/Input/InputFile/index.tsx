@@ -24,7 +24,7 @@ const InputFile = ({
   isRequired: boolean;
   htmlFor?: string;
   disabled?: boolean;
-  file: string;
+  file: File;
   setFile: (value: File) => void;
   label?: string;
   multiple?: boolean;
